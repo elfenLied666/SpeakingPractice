@@ -4,7 +4,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Figma Colors -->
-    <color name="purple_primary">#5D40D2</color>
+    <color name="purple_primary">#673AB7</color>
+    <color name="purple_primary_variant">#3700B3</color>
     <color name="light_background">#FBFBFF</color>
     <color name="light_purple_background">#F4F2FF</color>
     <color name="grey_tab">#E9E7F1</color>
