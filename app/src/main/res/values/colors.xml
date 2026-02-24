@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Figma Colors -->
+    <color name="purple_primary">#5D40D2</color>
+    <color name="light_background">#FBFBFF</color>
+    <color name="light_purple_background">#F4F2FF</color>
+    <color name="grey_tab">#E9E7F1</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="dark_background">#121212</color>
+
+</resources>
