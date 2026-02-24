@@ -4,7 +4,7 @@
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/purple_primary</item>
         <item name="android:windowBackground">@color/dark_background</item>
-        <!--<item name="android:fontFamily">@font/manrope</item>
-        <item name="fontFamily">@font/manrope</item>--> <!-- For Material Components -->
+        <item name="android:fontFamily">@font/manrope</item>
+        <item name="fontFamily">@font/manrope</item>
     </style>
 </resources>

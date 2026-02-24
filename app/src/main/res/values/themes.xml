@@ -4,8 +4,8 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/purple_primary</item>
         <item name="android:windowBackground">@color/light_background</item>
-       <!-- <item name="android:fontFamily">@font/manrope</item>
-        <item name="fontFamily">@font/manrope</item>--> <!-- For Material Components -->
+        <item name="android:fontFamily">@font/manrope</item>
+        <item name="fontFamily">@font/manrope</item>
     </style>
 
     <style name="Theme.SpeakingPractice" parent="Base.Theme.SpeakingPractice" />
