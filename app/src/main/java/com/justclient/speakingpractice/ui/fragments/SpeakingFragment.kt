@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.justclient.speakingpractice.R
 import com.justclient.speakingpractice.databinding.FragmentHomeBinding
-import com.justclient.speakingpractice.utils.GlobalConsts
+import com.justclient.speakingpractice.databinding.FragmentSpeakingBinding
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class SpeakingFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentSpeakingBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,17 +19,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentSpeakingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.frameLayout.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putInt(GlobalConsts.KEY_BN, GlobalConsts.BN_ALL_WORDS)
-            findNavController().navigate(R.id.action_homeFragment_to_speakingFragment, bundle)
-        }
+
     }
 
 }

@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.justclient.speakingpractice.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_speakingFragment"
+            app:destination="@id/speakingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/speakingFragment"
+        android:name="com.justclient.speakingpractice.ui.fragments.SpeakingFragment"
+        android:label="fragment_speaking"
+        tools:layout="@layout/fragment_speaking" />
 </navigation>

@@ -9,6 +9,11 @@
     <color name="light_background">#FBFBFF</color>
     <color name="light_purple_background">#F4F2FF</color>
     <color name="grey_tab">#E9E7F1</color>
+    <color name="test_color">#F5FC08</color>
+    <color name="h2_color">#101828</color>
+    <color name="ttl_world_spoken">#6336B3</color>
+    <color name="ttl_sentences_spoken">#004B70</color>
+    <color name="ttl_needs_review">#6A4E00</color>
 
     <!-- Dark Theme Colors -->
     <color name="dark_background">#121212</color>

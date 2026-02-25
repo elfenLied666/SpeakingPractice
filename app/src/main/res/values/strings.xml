@@ -2,4 +2,21 @@
     <string name="app_name">Speaking Practice</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="speaking_practice">Speaking Practice</string>
+    <string name="ttl1">My Progress</string>
+    <string name="ttl2">Speaking Practice</string>
+    <string name="words_spoken">Words Spoken</string>
+    <string name="sentences_spoken">Sentences Spoken</string>
+    <string name="needs_review">Needs Review</string>
+    <string name="daily_streak">Daily Streak</string>
+    <string name="bar_home">Home</string>
+    <string name="bar_progress">Progress</string>
+    <string name="sun">Sun</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+
 </resources>
