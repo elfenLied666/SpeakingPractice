@@ -15,6 +15,8 @@
     <color name="ttl_sentences_spoken">#004B70</color>
     <color name="ttl_needs_review">#6A4E00</color>
     <color name="no_active_label">#D3BBFF</color>
+    <color name="lbl_act">#D3BCFD</color>
+    <color name="lbl_no_act_full">#1D1B201A</color>
 
     <!-- Dark Theme Colors -->
     <color name="dark_background">#121212</color>
