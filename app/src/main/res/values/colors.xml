@@ -14,6 +14,7 @@
     <color name="ttl_world_spoken">#6336B3</color>
     <color name="ttl_sentences_spoken">#004B70</color>
     <color name="ttl_needs_review">#6A4E00</color>
+    <color name="no_active_label">#D3BBFF</color>
 
     <!-- Dark Theme Colors -->
     <color name="dark_background">#121212</color>
