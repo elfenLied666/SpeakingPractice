@@ -31,6 +31,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             bundle.putInt(GlobalConsts.KEY_BN, GlobalConsts.TP_ALL)
             findNavController().navigate(R.id.action_homeFragment_to_speakingFragment, bundle)
         }
+        binding.clWordSpoken.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt(GlobalConsts.KEY_BN, GlobalConsts.TP_WORD)
+            findNavController().navigate(R.id.action_homeFragment_to_speakingFragment, bundle)
+        }
+        binding.clSentencesSpoken.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt(GlobalConsts.KEY_BN, GlobalConsts.TP_SENTENCE)
+            findNavController().navigate(R.id.action_homeFragment_to_speakingFragment, bundle)
+        }
     }
 
 }

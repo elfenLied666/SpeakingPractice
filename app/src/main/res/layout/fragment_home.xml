@@ -58,6 +58,7 @@
 
         <!-- Внутренний ConstraintLayout для позиционирования элементов -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clWordSpoken"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/gradient_words_spoken_background">
@@ -156,6 +157,7 @@
 
         <!-- Внутренний ConstraintLayout для позиционирования элементов -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSentencesSpoken"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/gradient_sentences_spoken_background">
@@ -254,6 +256,7 @@
 
         <!-- Внутренний ConstraintLayout для позиционирования элементов -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clNeedsReview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/gradient_needs_review_background">
@@ -455,8 +458,8 @@
                 <ImageView
                     android:id="@+id/imgDay4"
                     android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/img_streak_fire" />
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_empty_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -480,7 +483,7 @@
                     android:id="@+id/imgDay5"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/img_streak_fire" />
+                    android:src="@drawable/img_empty_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -504,7 +507,7 @@
                     android:id="@+id/imgDay6"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/img_streak_fire" />
+                    android:src="@drawable/img_empty_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -529,7 +532,7 @@
                     android:id="@+id/imgDay7"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/img_streak_fire" />
+                    android:src="@drawable/img_empty_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"

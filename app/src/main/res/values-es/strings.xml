@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Práctica de conversación</string>
+    <!-- TODO: Eliminar o cambiar este texto de marcador de posición -->
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="speaking_practice">Práctica de conversación</string>
+    <string name="ttl1">Mi progreso</string>
+    <string name="ttl2">Práctica de conversación</string>
+    <string name="words_spoken">Palabras habladas</string>
+    <string name="sentences_spoken">Frases habladas</string>
+    <string name="needs_review">Necesita revisión</string>
+    <string name="daily_streak">Racha diaria</string>
+    <string name="bar_home">Inicio</string>
+    <string name="bar_progress">Progreso</string>
+    <string name="sun">Dom</string>
+    <string name="mon">Lun</string>
+    <string name="tue">Mar</string>
+    <string name="wed">Mié</string>
+    <string name="thu">Jue</string>
+    <string name="fri">Vie</string>
+    <string name="sat">Sáb</string>
+    <string name="practice_history">Historial de Prácticas</string>
+    <string name="all">Todos</string>
+    <string name="words">Palabras</string>
+    <string name="sentences">Frases</string>
+    <string name="sure_dialog_desc">¿Seguro que desea eliminar esto de su Historial de Prácticas?</string>
+    <string name="yes">Sí, Eliminar</string>
+    <string name="no">No, Cancelar</string>
+</resources>

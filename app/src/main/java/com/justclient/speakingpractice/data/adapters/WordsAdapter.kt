@@ -1,6 +1,7 @@
 package com.justclient.speakingpractice.data.adapters
 
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.AnimationDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,14 +52,16 @@ class WordsAdapter(
             binding.spWordText.text = word.spWord
 
             val isSelected = selectedItemIds.contains(word.id)
+            val animationDrawable = binding.volumeIcon.drawable as? AnimationDrawable
             if (isSelected) {
-                // Стиль для ВЫДЕЛЕННОГО элемента
                 binding.cardRoot.strokeColor = selectedStrokeColor
                 binding.cardRoot.strokeWidth = selectedStrokeWidth
+                animationDrawable?.start()
             } else {
-                // Стиль для ОБЫЧНОГО элемента
                 binding.cardRoot.strokeColor = unselectedStrokeColor
                 binding.cardRoot.strokeWidth = unselectedStrokeWidth
+                animationDrawable?.stop()
+                animationDrawable?.selectDrawable(0)
             }
            // binding.selectionBorder.visibility = if (isSelected) View.VISIBLE else View.GONE
             binding.root.setOnClickListener {

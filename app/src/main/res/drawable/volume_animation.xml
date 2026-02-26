@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/volume_animation.xml -->
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"> <!-- true: проиграть один раз и остановиться на последнем кадре -->
+
+    <!-- Кадр 1: Пропадает дальняя дуга -->
+    <item android:drawable="@drawable/speaker_frame_1" android:duration="200" />
+    <item android:drawable="@drawable/speaker_frame_2" android:duration="200" />
+
+    <!-- Кадр 2: Пропадает ближняя дуга -->
+    <item android:drawable="@drawable/speaker_frame_3" android:duration="200" />
+
+    <!-- Кадр 3: Появляется ближняя дуга -->
+    <item android:drawable="@drawable/speaker_frame_4" android:duration="200" />
+
+    <!-- Кадр 4: Возвращаемся в исходное состояние -->
+    <item android:drawable="@drawable/speaker_frame_5" android:duration="200" />
+
+</animation-list>
