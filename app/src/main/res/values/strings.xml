@@ -19,6 +19,9 @@
     <string name="fri">Fri</string>
     <string name="sat">Sat</string>
     <string name="practice_history">Practice History</string>
+    <string name="all">All</string>
+    <string name="words">Words</string>
+    <string name="sentences">Sentences</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -58,4 +59,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     // Persistence (Mandatory DataStore requirement)
     implementation(libs.androidx.datastore.preferences)
+    //Serialization
+    implementation(libs.kotlinx.serialization.json)
 }

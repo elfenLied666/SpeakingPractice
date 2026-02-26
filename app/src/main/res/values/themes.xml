@@ -17,4 +17,16 @@
     </style>
 
     <style name="Theme.SpeakingPractice" parent="Base.Theme.SpeakingPractice" />
+
+    <style name="Widget.App.ChipTextStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/lbl_no_act_text</item>
+
+    </style>
+
+
+
+
+
 </resources>

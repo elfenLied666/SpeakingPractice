@@ -28,7 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         binding.frameLayout.setOnClickListener {
             val bundle = Bundle()
-            bundle.putInt(GlobalConsts.KEY_BN, GlobalConsts.BN_ALL_WORDS)
+            bundle.putInt(GlobalConsts.KEY_BN, GlobalConsts.TP_ALL)
             findNavController().navigate(R.id.action_homeFragment_to_speakingFragment, bundle)
         }
     }

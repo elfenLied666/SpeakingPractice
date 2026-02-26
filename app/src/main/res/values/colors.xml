@@ -17,6 +17,14 @@
     <color name="no_active_label">#D3BBFF</color>
     <color name="lbl_act">#D3BCFD</color>
     <color name="lbl_no_act_full">#1D1B201A</color>
+    <color name="lbl_act_text">#3F008D</color>
+    <color name="lbl_no_act_text">#1D1B20</color>
+    <color name="lbl_mini_circle_act">#EBDDFF</color>
+    <color name="lbl_mini_circle_no_act">#D3BBFF</color>
+    <color name="lbl_mini_text_no_act">#4A4459</color>
+    <color name="lbl_mini_text_act">#3F008D</color>
+
+
 
     <!-- Dark Theme Colors -->
     <color name="dark_background">#121212</color>
