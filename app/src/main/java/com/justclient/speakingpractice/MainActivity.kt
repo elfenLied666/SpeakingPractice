@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
@@ -14,13 +15,16 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.savedstate.SavedState
+import com.justclient.speakingpractice.data.models.MainViewModel
 import com.justclient.speakingpractice.databinding.ActivityMainBinding
+import kotlin.getValue
 
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private var nowFragment: Int? = null
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             windowInsets
         }
         backBtnSetup()
+        mainViewModel.checkAndSeedData()
     }
 
     private fun getNavController(): NavController {

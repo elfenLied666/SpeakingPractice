@@ -23,7 +23,7 @@
     <color name="lbl_mini_circle_no_act">#D3BBFF</color>
     <color name="lbl_mini_text_no_act">#4A4459</color>
     <color name="lbl_mini_text_act">#3F008D</color>
-
+    <color name="item_card_border_color">#4680F0</color>
 
 
     <!-- Dark Theme Colors -->

@@ -27,6 +27,32 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         initialValue = emptyList()
     )
 
+    /*init {
+        checkAndSeedData()
+    }*/
+
+    fun checkAndSeedData() {
+        viewModelScope.launch {
+            val currentWords = dataStoreRepo.getWordsByType(null).first()
+            if (currentWords.isEmpty()) {
+                val testData = listOf(
+                    Word(enWord = "Hi", spWord = "hola", type = GlobalConsts.TP_WORD),
+                    Word(enWord = "Good bye", spWord = "Adiós", type = GlobalConsts.TP_WORD),
+                    Word(enWord = "Good afternoon", spWord = "Buenas tardes.", type = GlobalConsts.TP_WORD),
+                    Word(enWord = "Good morning", spWord = "Buenos días", type = GlobalConsts.TP_WORD),
+
+                    Word(enWord = "I am fine, thank you", spWord = "Estoy bien, gracias", type = GlobalConsts.TP_SENTENCE),
+                    Word(enWord = "What is your name?", spWord = "¿Cómo te llamas?", type = GlobalConsts.TP_SENTENCE),
+                    Word(enWord = "Where are you from?", spWord = "¿De dónde eres?", type = GlobalConsts.TP_SENTENCE),
+                    Word(enWord = "See you later", spWord = "Hasta luego", type = GlobalConsts.TP_SENTENCE)
+                )
+
+                testData.forEach { word ->
+                    dataStoreRepo.addWord(word)
+                }
+            }
+        }
+    }
 
     fun setFilter(wordType: Int) {
         _currentFilter.value = wordType

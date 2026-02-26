@@ -10,8 +10,11 @@ import androidx.activity.result.launch
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.justclient.speakingpractice.R
+import com.justclient.speakingpractice.data.adapters.WordsAdapter
 import com.justclient.speakingpractice.data.models.MainViewModel
+import com.justclient.speakingpractice.databinding.DialogDeleteConfirmationBinding
 import com.justclient.speakingpractice.databinding.FragmentPracticeHistoryBinding
 import com.justclient.speakingpractice.utils.GlobalConsts
 import kotlinx.coroutines.launch
@@ -23,6 +26,10 @@ class PracticeHistoryFragment : Fragment() {
     private val binding get() = _binding!!
 
     var tpDisplay: Int? = null
+    private lateinit var wordsAdapter: WordsAdapter
+
+    // Флаг, который отслеживает, находимся ли мы в режиме редактирования
+    private var isEditMode = false
 
     private val viewModel: MainViewModel by activityViewModels()
 
@@ -47,6 +54,62 @@ class PracticeHistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initResources()
+        updateEditModeUI()
+        setupRecyclerView()
+        observeViewModel()
+        tpDisplay = arguments?.getInt(GlobalConsts.KEY_BN, 1)
+        if(tpDisplay == GlobalConsts.TP_ALL) {
+            viewModel.setFilter(GlobalConsts.TP_ALL)
+        } else if(tpDisplay == GlobalConsts.TP_WORD) {
+            viewModel.setFilter(GlobalConsts.TP_WORD)
+        } else if(tpDisplay == GlobalConsts.TP_SENTENCE) {
+            viewModel.setFilter(GlobalConsts.TP_SENTENCE)
+        } else {
+            viewModel.setFilter(GlobalConsts.TP_ALL)
+        }
+        /*viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.filteredWords.collect { wordsList ->
+                //wordsAdapter.submitList(wordsList)
+            }
+        }*/
+
+        binding.chipAll.setOnClickListener {
+            //showChipAll()
+            viewModel.setFilter(GlobalConsts.TP_ALL)
+        }
+
+        binding.chipWords.setOnClickListener {
+            //showChipWords()
+            viewModel.setFilter(GlobalConsts.TP_WORD)
+        }
+
+        binding.chipSentences.setOnClickListener {
+            //showChipSentences()
+            viewModel.setFilter(GlobalConsts.TP_SENTENCE)
+        }
+
+        binding.iconEdit.setOnClickListener {
+            isEditMode = !isEditMode
+            //if (!isEditMode) wordsAdapter.clearSelections()
+            updateEditModeUI()
+        }
+
+        // Клик по удалению выделенных
+        binding.iconDelete.setOnClickListener {
+            val selectedIds = wordsAdapter.getSelectedItems()
+            if (selectedIds.isNotEmpty()) {
+                showDeleteConfirmationDialog {
+                    selectedIds.forEach { id -> viewModel.deleteWord(id) }
+                    isEditMode = false
+                    wordsAdapter.clearSelections()
+                    updateEditModeUI()
+                }
+            }
+        }
+    }
+
+    private fun initResources() {
         activeColorFull = ContextCompat.getColor(requireContext(), R.color.lbl_act)
         inactiveColorFull = ContextCompat.getColor(requireContext(), R.color.lbl_no_act_full)
         activeColorText = ContextCompat.getColor(requireContext(), R.color.lbl_act_text)
@@ -55,41 +118,10 @@ class PracticeHistoryFragment : Fragment() {
         inactiveColorMini = ContextCompat.getColor(requireContext(), R.color.lbl_mini_circle_no_act)
         inactiveColorMiniText = ContextCompat.getColor(requireContext(), R.color.lbl_mini_text_no_act)
         activeColorMiniText = ContextCompat.getColor(requireContext(), R.color.lbl_mini_text_act)
-        tpDisplay = arguments?.getInt(GlobalConsts.KEY_BN, 1)
-        if(tpDisplay == GlobalConsts.TP_ALL) {
-
-        } else if(tpDisplay == GlobalConsts.TP_WORD) {
-
-        } else if(tpDisplay == GlobalConsts.TP_SENTENCE) {
-
-        } else {
-
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.filteredWords.collect { wordsList ->
-                //wordsAdapter.submitList(wordsList)
-            }
-        }
-
-        binding.chipAll.setOnClickListener {
-            showChipAll()
-            //viewModel.setFilter(GlobalConsts.BN_ALL_WORDS)
-            // Тут же можно добавить логику смены стиля метки (сделать ее активной)
-        }
-
-        binding.chipWords.setOnClickListener {
-            showChipWords()
-            //viewModel.setFilter(GlobalConsts.TP_WORD) // Фильтр по типу "Слово"
-        }
-
-        binding.chipSentences.setOnClickListener {
-            showChipSentences()
-            //viewModel.setFilter(GlobalConsts.TP_SENTENCE) // Фильтр по типу "Предложение"
-        }
     }
 
-    fun showChipAll() {
-        if(tpDisplay == GlobalConsts.TP_ALL) return
+    fun showChipAll(isFunCall: Boolean = false) {
+        if(tpDisplay == GlobalConsts.TP_ALL && !isFunCall) return
         hideChipWords()
         hideChipSentences()
         binding.chipAll.setCardBackgroundColor(activeColorFull)
@@ -97,8 +129,8 @@ class PracticeHistoryFragment : Fragment() {
         binding.tvChipAll.alpha = alphaNoTrasparent
     }
 
-    fun showChipWords() {
-        if(tpDisplay == GlobalConsts.TP_WORD) return
+    fun showChipWords(isFunCall: Boolean = false) {
+        if(tpDisplay == GlobalConsts.TP_WORD && !isFunCall) return
         hideChipAll()
         hideChipSentences()
         binding.chipWords.backgroundTintList = ColorStateList.valueOf(activeColorFull)
@@ -109,8 +141,8 @@ class PracticeHistoryFragment : Fragment() {
         binding.wordsChipCount.alpha = alphaNoTrasparent
     }
 
-    fun showChipSentences() {
-        if(tpDisplay == GlobalConsts.TP_SENTENCE) return
+    fun showChipSentences(isFunCall: Boolean = false) {
+        if(tpDisplay == GlobalConsts.TP_SENTENCE && !isFunCall) return
         hideChipWords()
         hideChipAll()
         binding.chipSentences.backgroundTintList = ColorStateList.valueOf(activeColorFull)
@@ -145,7 +177,87 @@ class PracticeHistoryFragment : Fragment() {
         binding.sentencesChipCount.alpha = alphaTransparentCircle
     }
 
+    private fun setupRecyclerView() {
+        wordsAdapter = WordsAdapter(
+            onWordClick = { word, position ->
+                if (isEditMode) {
+                    updateEditModeUI()
+                }
+            },
+            onDeleteClick = { word ->
+                showDeleteConfirmationDialog {
+                    viewModel.deleteWord(word.id)
+                }
+            },
+            onVolumeClick = { word ->
 
+            }
+        )
+
+        binding.historyRecyclerView.apply {
+            adapter = wordsAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun observeViewModel() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.filteredWords.collect { wordsList ->
+                wordsAdapter.submitList(wordsList)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.currentFilter.collect { filter ->
+                val actualFilter = filter ?: GlobalConsts.TP_ALL
+                updateFilterChipUI(actualFilter)
+            }
+        }
+    }
+
+    private fun updateEditModeUI() {
+        if (isEditMode) {
+            binding.iconDelete.visibility = View.VISIBLE //if (wordsAdapter.getSelectedItems().isNotEmpty()) View.VISIBLE else View.GONE
+           // binding.iconEdit.setImageResource(R.drawable.ic_done)
+        } else {
+            binding.iconDelete.visibility = View.GONE
+            binding.iconEdit.setImageResource(R.drawable.ic_edit_square)
+        }
+    }
+
+    private fun updateFilterChipUI(selectedFilter: Int) {
+        /*hideChipAll()
+        hideChipWords()
+        hideChipSentences()*/
+
+        // Обновляем переменную класса
+        tpDisplay = selectedFilter
+
+        // "Включаем" нужный
+        when (selectedFilter) {
+            GlobalConsts.TP_ALL -> showChipAll(true)
+            GlobalConsts.TP_WORD -> showChipWords(true)
+            GlobalConsts.TP_SENTENCE -> showChipSentences(true)
+        }
+    }
+
+    private fun showDeleteConfirmationDialog(onConfirm: () -> Unit) {
+        val dialog = android.app.Dialog(requireContext())
+        val dialogBinding = DialogDeleteConfirmationBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+
+        // Делаем фон системного окна прозрачным, чтобы видеть наши закругленные углы
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        dialogBinding.btnCancel.setOnClickListener { dialog.dismiss() }
+        dialogBinding.btnClose.setOnClickListener { dialog.dismiss() }
+
+        dialogBinding.btnConfirmDelete.setOnClickListener {
+            onConfirm() // Вызываем действие удаления
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

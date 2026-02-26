@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_dialog_main">
+
+    <!-- Верхняя часть с градиентом -->
+    <View
+        android:id="@+id/topGradient"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gradient_delete_dialog_top"
+        app:layout_constraintDimensionRatio="H, 320:130"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Иконка закрытия -->
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="29dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <!-- Круг с мусоркой -->
+    <FrameLayout
+        android:id="@+id/flpic"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_delete_icon_circle"
+        app:layout_constraintBottom_toBottomOf="@id/topGradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topGradient"
+        android:alpha="0.16">
+
+
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_delete3"
+        app:layout_constraintBottom_toBottomOf="@+id/flpic"
+        app:layout_constraintEnd_toEndOf="@+id/flpic"
+        app:layout_constraintStart_toStartOf="@+id/flpic"
+        app:layout_constraintTop_toTopOf="@+id/flpic" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="24dp"
+        style="@style/Widget.App.ChipTextStyle"
+        android:gravity="center"
+        android:lineHeight="20sp"
+        android:text="@string/sure_dialog_desc"
+        android:textColor="#49454F"
+        android:textSize="14sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topGradient" />
+
+    <!-- Кнопки -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMessage">
+
+        <TextView
+            android:id="@+id/btnConfirmDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:text="Yes, Delete"
+            android:textColor="#BA1A1A"
+            android:textStyle="bold"
+            android:fontFamily="@font/manrope" />
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:background="@drawable/bg_cancel_btn"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:text="No, Cancel"
+            android:textColor="#673AB7"
+            android:textStyle="bold"
+            android:fontFamily="@font/manrope" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
