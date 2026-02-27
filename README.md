@@ -30,7 +30,7 @@ The project follows a modern **MVVM (Model-View-ViewModel)** architecture using 
 ## Setup Steps
 
 1. Clone the repository:
-   bash git clone <your-repository-url>
+   bash git clone https://github.com/elfenLied666/SpeakingPractice.git
 2. Open the project in the latest stable version of Android Studio.
 3. Let Gradle sync the project dependencies.
 4. Run the application on an emulator or a physical Android device.
