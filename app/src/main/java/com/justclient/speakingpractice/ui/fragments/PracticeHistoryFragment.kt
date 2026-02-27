@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.activity.result.launch
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.justclient.speakingpractice.R
 import com.justclient.speakingpractice.data.adapters.WordsAdapter
@@ -20,12 +22,12 @@ import com.justclient.speakingpractice.utils.GlobalConsts
 import kotlinx.coroutines.launch
 import kotlin.getValue
 
-class PracticeHistoryFragment : Fragment() {
+class PracticeHistoryFragment(var tpDisplay: Int?) : Fragment() {
 
     private var _binding: FragmentPracticeHistoryBinding? = null
     private val binding get() = _binding!!
 
-    var tpDisplay: Int? = null
+    //var tpDisplay: Int? = null
     private lateinit var wordsAdapter: WordsAdapter
 
     // Флаг, который отслеживает, находимся ли мы в режиме редактирования
@@ -54,11 +56,6 @@ class PracticeHistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initResources()
-        updateEditModeUI()
-        setupRecyclerView()
-        observeViewModel()
-        tpDisplay = arguments?.getInt(GlobalConsts.KEY_BN, 1)
         if(tpDisplay == GlobalConsts.TP_ALL) {
             viewModel.setFilter(GlobalConsts.TP_ALL)
         } else if(tpDisplay == GlobalConsts.TP_WORD) {
@@ -68,6 +65,11 @@ class PracticeHistoryFragment : Fragment() {
         } else {
             viewModel.setFilter(GlobalConsts.TP_ALL)
         }
+        initResources()
+        updateEditModeUI()
+        setupRecyclerView()
+        observeViewModel()
+
         /*viewLifecycleOwner.lifecycleScope.launch {
             viewModel.filteredWords.collect { wordsList ->
                 //wordsAdapter.submitList(wordsList)
@@ -95,7 +97,6 @@ class PracticeHistoryFragment : Fragment() {
             updateEditModeUI()
         }
 
-        // Клик по удалению выделенных
         binding.iconDelete.setOnClickListener {
             val selectedIds = wordsAdapter.getSelectedItems()
             if (selectedIds.isNotEmpty()) {
@@ -212,6 +213,20 @@ class PracticeHistoryFragment : Fragment() {
                 updateFilterChipUI(actualFilter)
             }
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.wordsCount.collect { count ->
+                    binding.wordsChipCount.text = count.toString()
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.sentencesCount.collect { count ->
+                    binding.sentencesChipCount.text = count.toString()
+                }
+            }
+        }
     }
 
     private fun updateEditModeUI() {
@@ -252,7 +267,7 @@ class PracticeHistoryFragment : Fragment() {
         dialogBinding.btnClose.setOnClickListener { dialog.dismiss() }
 
         dialogBinding.btnConfirmDelete.setOnClickListener {
-            onConfirm() // Вызываем действие удаления
+            onConfirm()
             dialog.dismiss()
         }
 

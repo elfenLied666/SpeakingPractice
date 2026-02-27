@@ -9,6 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.justclient.speakingpractice.R
 import com.justclient.speakingpractice.data.adapters.SpeakingPagerAdapter
 import com.justclient.speakingpractice.databinding.FragmentSpeakingBinding
+import com.justclient.speakingpractice.utils.GlobalConsts
 
 class SpeakingFragment : Fragment() {
 
@@ -26,10 +27,10 @@ class SpeakingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val pagerAdapter = SpeakingPagerAdapter(this)
+        var tpDisplay = arguments?.getInt(GlobalConsts.KEY_BN, 1)
+        val pagerAdapter = SpeakingPagerAdapter(this, tpDisplay)
         binding.viewPager.adapter = pagerAdapter
 
-        // 2. Связываем TabLayout и ViewPager2. Код не изменился.
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = if (position == 0) {
                 requireContext().getString(R.string.practice_history)

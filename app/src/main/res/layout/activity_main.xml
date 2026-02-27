@@ -13,8 +13,9 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/purple_primary"
-        app:layout_constraintHeight_min="24dp"
-        android:visibility="visible"/>
+        app:layout_constraintHeight_min="20dp"
+        android:visibility="visible"
+        tools:layout_height="20dp"/>
     <!--android:background="@color/purple_primary"-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appbar"
@@ -31,7 +32,7 @@
             android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintHeight_percent="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back" />

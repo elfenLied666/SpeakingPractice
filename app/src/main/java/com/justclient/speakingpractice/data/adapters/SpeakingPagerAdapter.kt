@@ -5,15 +5,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.justclient.speakingpractice.ui.fragments.NeedsReviewFragment
 import com.justclient.speakingpractice.ui.fragments.PracticeHistoryFragment
 
-class SpeakingPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class SpeakingPagerAdapter(fragment: Fragment, var tpDisplay: Int?) : FragmentStateAdapter(fragment) {
 
-    // У нас по-прежнему две вкладки
     override fun getItemCount(): Int = 2
 
-    // Метод, который создает нужный фрагмент для нужной позиции
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> PracticeHistoryFragment()
+            0 -> PracticeHistoryFragment(tpDisplay)
             1 -> NeedsReviewFragment()
             else -> throw IllegalStateException("Invalid position $position")
         }

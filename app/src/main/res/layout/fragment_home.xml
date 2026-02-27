@@ -12,8 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginTop="@dimen/dp22"
+        android:layout_marginEnd="@dimen/dp18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,7 +27,7 @@
             android:text="@string/speaking_practice"
             android:textColor="@color/h2_color"
             android:textFontWeight="700"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp16"
             android:textStyle="bold" />
 
         <ImageView
@@ -48,8 +48,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="18dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="50dp"
-        app:cardMaxElevation="60dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="false"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp"
         app:layout_constraintDimensionRatio="378:106"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +97,7 @@
                 android:text="@string/words_spoken"
                 android:textColor="@color/ttl_world_spoken"
                 android:textFontWeight="700"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp14"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline_vertical_6_2"
                 app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_20_2"
@@ -108,8 +110,8 @@
                 android:text="12"
                 android:gravity="top"
                 android:textColor="@color/ttl_world_spoken"
-                android:textSize="32sp"
-                android:layout_marginTop="-8dp"
+                android:textSize="@dimen/sp32"
+                android:layout_marginTop="@dimen/dpm8"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/sentences_spoken_label"
                 app:layout_constraintTop_toBottomOf="@+id/sentences_spoken_label" />
@@ -148,8 +150,10 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="18dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="50dp"
-        app:cardMaxElevation="60dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="false"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp"
         app:layout_constraintDimensionRatio="378:106"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +188,6 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.2" />
 
-            <!-- Элементы интерфейса -->
 
             <TextView
                 android:id="@+id/words_spoken_label"
@@ -194,7 +197,7 @@
                 android:text="@string/sentences_spoken"
                 android:textColor="@color/ttl_sentences_spoken"
                 android:textFontWeight="700"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp14"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline_vertical_6"
                 app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_20"
@@ -204,11 +207,11 @@
                 android:id="@+id/words_spoken_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-8dp"
+                android:layout_marginTop="@dimen/dpm8"
                 android:gravity="top"
                 android:text="12"
                 android:textColor="@color/ttl_sentences_spoken"
-                android:textSize="32sp"
+                android:textSize="@dimen/sp32"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/words_spoken_label"
                 app:layout_constraintTop_toBottomOf="@+id/words_spoken_label" />
@@ -247,21 +250,21 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="18dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="50dp"
-        app:cardMaxElevation="60dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="false"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp"
         app:layout_constraintDimensionRatio="378:106"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/words_spoken_card">
 
-        <!-- Внутренний ConstraintLayout для позиционирования элементов -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clNeedsReview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/gradient_needs_review_background">
 
-            <!-- Направляющие (Guidelines) для процентного позиционирования -->
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_vertical_6_3"
                 android:layout_width="wrap_content"
@@ -291,7 +294,7 @@
                 android:text="@string/needs_review"
                 android:textColor="@color/ttl_needs_review"
                 android:textFontWeight="700"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp14"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline_vertical_6_3"
                 app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_20_3"
@@ -301,11 +304,11 @@
                 android:id="@+id/needs_review_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-8dp"
+                android:layout_marginTop="@dimen/dpm8"
                 android:gravity="top"
                 android:text="12"
                 android:textColor="@color/ttl_needs_review"
-                android:textSize="32sp"
+                android:textSize="@dimen/sp32"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/needs_review_label"
                 app:layout_constraintTop_toBottomOf="@+id/needs_review_label" />
@@ -347,7 +350,7 @@
         android:text="@string/daily_streak"
         android:textColor="@color/h2_color"
         android:textFontWeight="700"
-        android:textSize="16sp"
+        android:textSize="@dimen/sp16"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/needs_review_card" />
@@ -362,6 +365,8 @@
         app:cardCornerRadius="8dp"
         app:layout_constraintDimensionRatio="378:82"
         app:cardElevation="10dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -385,8 +390,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay1"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_streak_fire" />
 
                 <TextView
@@ -396,7 +401,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="@string/sun"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
             <LinearLayout
@@ -409,8 +414,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay2"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_streak_fire" />
 
                 <TextView
@@ -420,7 +425,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="@string/mon"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
             <LinearLayout
@@ -433,8 +438,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay3"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_streak_fire" />
 
                 <TextView
@@ -444,7 +449,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="@string/thu"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
             <LinearLayout
@@ -457,8 +462,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay4"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_empty_circle" />
 
                 <TextView
@@ -468,7 +473,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="@string/wed"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
             <LinearLayout
@@ -481,8 +486,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay5"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_empty_circle" />
 
                 <TextView
@@ -492,7 +497,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="@string/thu"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
             <LinearLayout
@@ -505,8 +510,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay6"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_empty_circle" />
 
                 <TextView
@@ -516,7 +521,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="@string/fri"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
             <LinearLayout
@@ -530,8 +535,8 @@
 
                 <ImageView
                     android:id="@+id/imgDay7"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
                     android:src="@drawable/img_empty_circle" />
 
                 <TextView
@@ -541,7 +546,7 @@
                     android:fontFamily="@font/manrope"
                     android:text="Tue"
                     android:textColor="#A3A3A3"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
         </LinearLayout>
@@ -556,6 +561,8 @@
         app:cardCornerRadius="28dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="false"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

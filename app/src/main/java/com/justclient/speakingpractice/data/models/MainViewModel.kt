@@ -27,6 +27,30 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         initialValue = emptyList()
     )
 
+    private val allWords: StateFlow<List<Word>> = dataStoreRepo.getWordsByType(null)
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
+
+    val wordsCount: StateFlow<Int> = allWords.map { list ->
+        list.count { it.type == GlobalConsts.TP_WORD }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = 0
+    )
+
+    val sentencesCount: StateFlow<Int> = allWords.map { list ->
+        // Считаем количество элементов с нужным типом
+        list.count { it.type == GlobalConsts.TP_SENTENCE }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = 0
+    )
+
     /*init {
         checkAndSeedData()
     }*/

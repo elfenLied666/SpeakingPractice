@@ -25,7 +25,6 @@ class NeedsReviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Логика для экрана "Needs Review"
     }
 
     override fun onDestroyView() {

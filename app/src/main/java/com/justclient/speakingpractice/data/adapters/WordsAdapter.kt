@@ -37,7 +37,7 @@ class WordsAdapter(
 
     fun clearSelections() {
         selectedItemIds.clear()
-        notifyDataSetChanged() // Перерисовываем весь список, чтобы убрать выделения
+        notifyDataSetChanged()
     }
 
     inner class WordViewHolder(private val binding: ItemPracticeWordBinding) : RecyclerView.ViewHolder(binding.root) {
